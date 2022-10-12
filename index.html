@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Kikaku - Your Personal Board</title>
+  </head>
+  <body>
+    <main>
+      <!-- Onboarding Page -->
+      <div id="onbording-page">
+        <!-- Main container -->
+        <div class="container">
+          <!-- Kikaku Logo -->
+          <img class="logo" src="img/kikaku.svg" alt="kikaku logo" />
+          <!-- Onboarding Form -->
+          <form id="onbording-form">
+            <!-- First Page -->
+            <div class="hero__wrapper" id="first-info">
+              <h1 class="hero__wrapper__headline">
+                Welcome to Kikaku your personal board!
+              </h1>
+            </div>
+            <!-- Second Page -->
+            <div class="hero__wrapper" id="second-info" hidden>
+              <div class="input__wrapper">
+                <h1 class="hero__wrapper__headline">What's your name?</h1>
+                <label for="username" aria-label="What's your name?"></label>
+                <!-- Input for the Username -->
+                <input type="text" name="username" id="username" />
+              </div>
+            </div>
+            <!-- Third Page -->
+            <div class="hero__wrapper" id="third-info" hidden>
+              <!-- JavaScript fills the info -->
+            </div>
+            <!-- Buttons -->
+            <button class="btn__skip" id="skip-btn" hidden>Skip</button>
+            <button class="btn btn__next" type="submit" id="next-btn">
+              Next
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
