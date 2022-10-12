@@ -27,7 +27,7 @@ function changePage(e) {
     hideAndShow(firstPage, secondPage);
     return;
   }
-  if (!secondPage.hidden && thirdPage.hidden) {
+  if (!secondPage.hidden && thirdPage.hidden && username.trim() != "") {
     thirdPage.innerHTML = `<p class="hero__wrapper__paragraph"> Hi ${username}, we have a few simple questions to make your board more personal.
     `;
     hideAndShow(secondPage, thirdPage);

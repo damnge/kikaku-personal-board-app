@@ -29,7 +29,15 @@
                 <h1 class="hero__wrapper__headline">What's your name?</h1>
                 <label for="username" aria-label="What's your name?"></label>
                 <!-- Input for the Username -->
-                <input type="text" name="username" id="username" />
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  required
+                  minlength="3"
+                  maxlength="100"
+                  title="This is a required field"
+                />
               </div>
             </div>
             <!-- Third Page -->
