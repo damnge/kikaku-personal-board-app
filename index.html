@@ -18,30 +18,139 @@
           <!-- Onboarding Form -->
           <form id="onbording-form">
             <!-- First Page -->
-            <div class="hero__wrapper" id="first-info">
-              <h1 class="hero__wrapper__headline">
+            <div class="hero__section" id="first-info">
+              <h1 class="hero__section__headline">
                 Welcome to Kikaku your personal board!
               </h1>
             </div>
             <!-- Second Page -->
-            <div class="hero__wrapper" id="second-info" hidden>
-              <div class="input__wrapper">
-                <h1 class="hero__wrapper__headline">What's your name?</h1>
+            <div class="hero__section" id="second-info" hidden>
+              <div class="hero__section__wrapper">
+                <h1 class="hero__section__headline">What's your name?</h1>
                 <label for="username" aria-label="What's your name?"></label>
                 <!-- Input for the Username -->
                 <input
+                  class="name__input"
                   type="text"
                   name="username"
                   id="username"
-                  required
-                  minlength="3"
-                  maxlength="100"
-                  title="This is a required field"
+                  autofocus
                 />
               </div>
             </div>
             <!-- Third Page -->
-            <div class="hero__wrapper" id="third-info" hidden>
+            <div class="hero__section" id="third-info" hidden>
+              <!-- JavaScript fills the info -->
+            </div>
+            <!-- Forth Page -->
+            <div class="hero__section" id="forth-info" hidden>
+              <div class="hero__section__wrapper">
+                <img
+                  class="progress__bar"
+                  src="img/progress bar1.svg"
+                  alt="progres bar - first step"
+                />
+                <h1 class="hero__section__question">
+                  Choose your photo background theme?
+                </h1>
+                <!-- Radio inputs containers where user can select different option -->
+                <div class="radio__inputs">
+                  <!-- Minimalistic Category -->
+                  <div class="radio__inputs__box">
+                    <label for="minimal">Minimalistic</label>
+                    <input
+                      type="radio"
+                      name="themes"
+                      id="minmal"
+                      value="minimalistic"
+                    />
+                  </div>
+                  <!-- Nature Category -->
+                  <div class="radio__inputs__box">
+                    <label for="nature">Nature</label>
+                    <input
+                      type="radio"
+                      name="themes"
+                      id="nature"
+                      value="nature"
+                    />
+                  </div>
+                  <!-- Abstract Category -->
+                  <div class="radio__inputs__box">
+                    <label for="abstract">Abstract</label>
+                    <input
+                      type="radio"
+                      name="themes"
+                      id="abstract"
+                      value="abstract"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fifth Page -->
+            <div class="hero__section" id="fifth-info" hidden>
+              <div class="hero__section__wrapper">
+                <img
+                  class="progress__bar"
+                  src="img/progress bar2.svg"
+                  alt="progres bar - first step"
+                />
+                <h1 class="hero__section__question">
+                  Would you like to see curiosity of the day on your board?
+                </h1>
+                <!-- Radio inputs containers where user can select different option -->
+                <div class="radio__inputs">
+                  <!-- Minimalistic Category -->
+                  <div class="radio__inputs__box">
+                    <label for="answer-yes">Yes</label>
+                    <input
+                      type="radio"
+                      name="answer"
+                      id="answer-yes"
+                      value="true"
+                    />
+                  </div>
+                  <!-- Nature Category -->
+                  <div class="radio__inputs__box">
+                    <label for="answer-no">No</label>
+                    <input
+                      type="radio"
+                      name="answer"
+                      id="answer-no"
+                      value="false"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Sixth Page -->
+            <div class="hero__section" id="sixth-info" hidden>
+              <div class="hero__section__wrapper">
+                <img
+                  class="progress__bar"
+                  src="img/progress bar3.svg"
+                  alt="progres bar - first step"
+                />
+                <h1 class="hero__section__question">
+                  What’s your favorite cryptocurrency?
+                </h1>
+                <label
+                  for="crypto"
+                  aria-label="What’s your favorite cryptocurrency?"
+                ></label>
+                <!-- Input for the Crypto -->
+                <input
+                  class="name__input"
+                  type="text"
+                  name="crypto"
+                  id="crypto"
+                  autofocus
+                />
+              </div>
+            </div>
+            <!-- Seventh Page -->
+            <div class="hero__section" id="seventh-info" hidden>
               <!-- JavaScript fills the info -->
             </div>
             <!-- Buttons -->
