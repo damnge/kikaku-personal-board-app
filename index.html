@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style/onboardingstyle.css" />
+    <link rel="stylesheet" href="style/mainboardstyle.css" />
     <title>Kikaku - Your Personal Board</title>
   </head>
   <body>
     <main>
       <!-- Onboarding Page -->
-      <div id="onbording-page">
+      <div id="onboarding-page" hidden>
         <!-- Main container -->
         <div class="container">
           <!-- Kikaku Logo -->
@@ -161,8 +162,23 @@
           </form>
         </div>
       </div>
+      <!-- Main Board -->
+      <div class="main__board" id="main-board">
+        <div class="main__board__container">
+          <div class="top">
+            <div id="crypto-widget">
+              <div id="crypto-top"></div>
+            </div>
+            <div id="weather"></div>
+          </div>
+
+          <h1 id="time" class="time">10:10</h1>
+          <p id="author"></p>
+        </div>
+      </div>
     </main>
 
     <script src="script.js"></script>
+    <script src="boardscript.js"></script>
   </body>
 </html>
