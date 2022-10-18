@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
 .main__board {
   margin: 0;
   background: no-repeat center center fixed;
@@ -16,6 +17,32 @@
   justify-content: space-between;
 }
 
+.center__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center__section__gretting {
+  font-size: 54px;
+}
+.center__section__subtitle {
+  margin-top: 50px;
+  font-size: 34px;
+}
+.center__section .name__input {
+  margin-top: 20px;
+  border: none;
+  border-bottom: 3px solid white;
+  padding: 5px 10px;
+  outline: none;
+  width: 426px;
+  background: transparent;
+}
+.center__section .name__input:focus {
+  color: white;
+}
+
 div.top {
   display: flex;
   justify-content: space-between;
@@ -23,6 +50,7 @@ div.top {
 
 h1.time {
   text-align: center;
+  font-size: 145px;
 }
 
 div#crypto {

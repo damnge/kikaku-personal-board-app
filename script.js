@@ -96,6 +96,7 @@ function nextPage(e) {
     That’s all ${username}!</br>Enjoy your day with kikaku!
   </h1>`;
     hideAndShow(sixthPage, seventhPage);
+    return;
   } else if (crypto.trim() === "" && curiosity) {
     alert("provide crypto!");
     return;
@@ -104,6 +105,7 @@ function nextPage(e) {
     console.log("bye bye!");
     onboardingPage.hidden = true;
     mainBoardPage.hidden = false;
+    return;
   }
 }
 // function moves to next page on pressing enter

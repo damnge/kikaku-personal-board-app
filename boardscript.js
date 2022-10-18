@@ -1,7 +1,15 @@
 const mainBoardPage = document.getElementById("main-board");
 
+const grettingMsg = document.getElementById("gretting");
+
+let mainUsername = localStorage.userName;
+
+let myCrypto = localStorage.crypto;
+
+let myTheme = localStorage.themes;
+
 fetch(
-  "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
+  `https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=${myTheme}`
 )
   .then((res) => res.json())
   .then((data) => {
@@ -15,7 +23,7 @@ fetch(
     document.getElementById("author").textContent = `By: Dodi Achmad`;
   });
 
-fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
+fetch(`https://api.coingecko.com/api/v3/coins/${myCrypto}`)
   .then((res) => {
     if (!res.ok) {
       throw Error("Something went wrong");
@@ -38,7 +46,7 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
 function getCurrentTime() {
   const date = new Date();
   document.getElementById("time").textContent = date.toLocaleTimeString(
-    "en-us",
+    "en-GB",
     { timeStyle: "short" }
   );
 }
@@ -65,3 +73,9 @@ navigator.geolocation.getCurrentPosition((position) => {
     })
     .catch((err) => console.error(err));
 });
+
+function displayGretting() {
+  grettingMsg.innerHTML = `Good morning ${mainUsername}!`;
+}
+
+displayGretting();
