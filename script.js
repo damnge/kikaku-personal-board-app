@@ -102,7 +102,6 @@ function nextPage(e) {
     return;
   }
   if (!seventhPage.hidden) {
-    console.log("bye bye!");
     onboardingPage.hidden = true;
     mainBoardPage.hidden = false;
     return;
@@ -128,6 +127,10 @@ function startBoarding() {
 onboardingForm.addEventListener("click", radioSelection);
 document.addEventListener("keydown", pressEnter);
 nextBtn.addEventListener("click", nextPage);
+skipBtn.addEventListener("click", () => {
+  onboardingPage.hidden = true;
+  mainBoardPage.hidden = false;
+});
 
 // On Load
 startBoarding();

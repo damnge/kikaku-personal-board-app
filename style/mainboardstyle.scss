@@ -47,6 +47,34 @@ $pirmary-color: #333333;
   }
 }
 
+.widget {
+  width: 340px;
+  height: 100px;
+  background-color: white;
+  border-radius: 5px;
+  color: #333333;
+  text-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+
+  &__crypto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      margin-right: 20px;
+    }
+  }
+}
+.current__price {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 div.top {
   display: flex;
   justify-content: space-between;

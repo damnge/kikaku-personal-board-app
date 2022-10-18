@@ -2,11 +2,11 @@ const mainBoardPage = document.getElementById("main-board");
 
 const grettingMsg = document.getElementById("gretting");
 
-let mainUsername = localStorage.userName;
+let mainUsername = localStorage.getItem("userName");
 
-let myCrypto = localStorage.crypto;
+let myCrypto = localStorage.getItem("crypto");
 
-let myTheme = localStorage.themes;
+let myTheme = localStorage.getItem("themes");
 
 fetch(
   `https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=${myTheme}`
@@ -31,15 +31,21 @@ fetch(`https://api.coingecko.com/api/v3/coins/${myCrypto}`)
     return res.json();
   })
   .then((data) => {
-    document.getElementById("crypto-top").innerHTML = `
+    console.log(data);
+    document.getElementById("crypto-img").innerHTML = `
             <img src=${data.image.small} />
-            <span>${data.name}</span>
         `;
-    document.getElementById("crypto-widget").innerHTML += `
-            <p>🎯: $${data.market_data.current_price.usd}</p>
-            <p>👆: $${data.market_data.high_24h.usd}</p>
-            <p>👇: $${data.market_data.low_24h.usd}</p>
+    document.getElementById("crypto-data").innerHTML += `
+            <p class="current__price">$${data.market_data.current_price.usd}</p>
+            <p class="price__change">${data.market_data.price_change_24h_in_currency.usd.toFixed(
+              2
+            )}</p>
         `;
+    if (data.market_data.price_change_24h_in_currency.usd < 0) {
+      document.querySelector(".price__change").style.color = "red";
+    } else {
+      document.querySelector(".price__change").style.color = "green";
+    }
   })
   .catch((err) => console.error(err));
 
@@ -55,7 +61,7 @@ setInterval(getCurrentTime, 1000);
 
 navigator.geolocation.getCurrentPosition((position) => {
   fetch(
-    `https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`
+    `https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`
   )
     .then((res) => {
       if (!res.ok) {
