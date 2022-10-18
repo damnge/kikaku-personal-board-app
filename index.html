@@ -165,19 +165,27 @@
       <!-- Main Board -->
       <div class="main__board" id="main-board">
         <div class="main__board__container">
-          <div class="top">
+          <div class="widget__switcher">
+            <label class="switch">
+              <input type="checkbox" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="top__right">
             <div class="widget">
               <div class="widget__crypto">
                 <div id="crypto-img"></div>
                 <div id="crypto-chart">
                   <img
                     src="https://www.coingecko.com/coins/1/sparkline"
-                    alt="chart btc"
+                    alt="chart bitcoin last 7 days"
                   />
                 </div>
                 <div id="crypto-data"></div>
               </div>
             </div>
+          </div>
+          <div class="weather__widget">
             <div id="weather"></div>
           </div>
           <div class="center__section">
