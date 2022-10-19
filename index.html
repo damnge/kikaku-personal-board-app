@@ -165,13 +165,14 @@
       <!-- Main Board -->
       <div class="main__board" id="main-board">
         <div class="main__board__container">
+          <!-- Swicher for the left widgets -->
           <div class="widget__switcher">
             <label class="switch">
               <input type="checkbox" id="widget-swticher" checked />
               <span class="slider"></span>
             </label>
           </div>
-          <!-- Widgets on the top rigth side -->
+          <!-- Widgets on the top left side -->
           <div class="top__right" id="my-widgets">
             <div class="widget">
               <div class="widget__crypto">
@@ -188,7 +189,15 @@
           <!-- Main widget in the center with clock -->
           <div class="center__widget">
             <div class="center__widget__section">
-              <h1 id="time" class="time"></h1>
+              <div class="center__widget__section__nav">
+                <img class="icon" src="img/clock.svg" alt="clock" />
+                <span class="icon__info">clock</span>
+                <img class="icon" src="img/meditation.svg" alt="meditation" />
+                <span class="icon__info">meditation</span>
+                <img class="icon" src="img/timer.svg" alt="pomodoro timer" />
+                <span class="icon__info">pomodoro timer</span>
+              </div>
+              <h1 id="time" class="center__widget__section__time"></h1>
               <h2 class="center__widget__section__gretting" id="gretting"></h2>
 
               <label

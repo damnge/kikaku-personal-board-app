@@ -4,6 +4,9 @@ const grettingMsg = document.getElementById("gretting");
 const switchBtn = document.getElementById("widget-swticher");
 // data from the localStorage
 
+let icons = document.querySelectorAll(".icon");
+let iconsInfo = document.querySelectorAll(".icon__info");
+
 let mainUsername = localStorage.getItem("userName");
 let myCrypto = localStorage.getItem("crypto");
 let myTheme = localStorage.getItem("themes");
@@ -61,6 +64,7 @@ fetch(
   })
   .catch((err) => console.error(err));
 
+// Function getting current time
 function getCurrentTime() {
   const date = new Date();
   document.getElementById("time").textContent = date.toLocaleTimeString(
@@ -72,6 +76,7 @@ function getCurrentTime() {
 getCurrentTime();
 setInterval(getCurrentTime, 1000);
 
+// fetching weather API
 navigator.geolocation.getCurrentPosition((position) => {
   fetch(
     `https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`
@@ -113,3 +118,7 @@ switchBtn.addEventListener("click", () => {
 });
 displayGretting();
 setInterval(displayGretting, 60000);
+
+// icons[0].addEventListener("mouseover", () => {
+//   iconsInfo[0].style.display = "block";
+// });
