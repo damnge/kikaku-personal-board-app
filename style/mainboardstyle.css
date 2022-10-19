@@ -17,20 +17,26 @@
   justify-content: space-between;
 }
 
-.center__section {
+.center__widget {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.center__widget__section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.center__section__gretting {
+.center__widget__section__gretting {
   font-size: 54px;
 }
-.center__section__subtitle {
+.center__widget__section__subtitle {
   margin-top: 50px;
   font-size: 34px;
 }
-.center__section .name__input {
+.center__widget__section .name__input {
   margin-top: 20px;
   border: none;
   border-bottom: 3px solid white;
@@ -39,7 +45,7 @@
   width: 426px;
   background: transparent;
 }
-.center__section .name__input:focus {
+.center__widget__section .name__input:focus {
   color: white;
 }
 

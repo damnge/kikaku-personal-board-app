@@ -1,15 +1,20 @@
+//main variables inside the board
 const mainBoardPage = document.getElementById("main-board");
-
 const grettingMsg = document.getElementById("gretting");
+const switchBtn = document.getElementById("widget-swticher");
+// data from the localStorage
 
 let mainUsername = localStorage.getItem("userName");
-
 let myCrypto = localStorage.getItem("crypto");
-
 let myTheme = localStorage.getItem("themes");
+let myTime = [];
 
+// api Key for unslpash
+const apiKey = "L3vkAHR1RZx6ycMWbsGzNucWccOq-ssQ3f7WVQKH9ng";
+
+// fetching unsplash photos
 fetch(
-  `https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=${myTheme}`
+  `https://api.unsplash.com/photos//random?orientation=landscape&query=${myTheme}&client_id=${apiKey}`
 )
   .then((res) => res.json())
   .then((data) => {
@@ -17,13 +22,14 @@ fetch(
     document.getElementById("author").textContent = `By: ${data.user.name}`;
   })
   .catch((err) => {
-    // Use a default background image/author
-    mainBoardPage.style.backgroundImage = `url(https://images.unsplash.com/photo-1560008511-11c63416e52d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4NDIxMTc&ixlib=rb-1.2.1&q=80&w=1080
-)`;
-    document.getElementById("author").textContent = `By: Dodi Achmad`;
+    // Use a default background image
+    mainBoardPage.style.backgroundImage = `url(img/errorbg.png)`;
   });
 
-fetch(`https://api.coingecko.com/api/v3/coins/${myCrypto}`)
+//   fetching Crytpo API from Coingecko
+fetch(
+  `https://api.coingecko.com/api/v3/coins/${myCrypto}?tickers=true&market_data=true&community_data=true&developer_data=true&sparkline=true`
+)
   .then((res) => {
     if (!res.ok) {
       throw Error("Something went wrong");
@@ -43,8 +49,14 @@ fetch(`https://api.coingecko.com/api/v3/coins/${myCrypto}`)
         `;
     if (data.market_data.price_change_24h_in_currency.usd < 0) {
       document.querySelector(".price__change").style.color = "red";
+      document.getElementById(
+        "crypto-chart"
+      ).innerHTML = `<img src="img/minuschart.svg" alt="daily chart of ${myCrypto}">`;
     } else {
       document.querySelector(".price__change").style.color = "green";
+      document.getElementById(
+        "crypto-chart"
+      ).innerHTML = `<img src="img/pluschart.svg" alt="daily chart of ${myCrypto}">`;
     }
   })
   .catch((err) => console.error(err));
@@ -55,8 +67,9 @@ function getCurrentTime() {
     "en-GB",
     { timeStyle: "short" }
   );
+  myTime = date.toLocaleTimeString("en-GB", { timeStyle: "short" }).split(":");
 }
-
+getCurrentTime();
 setInterval(getCurrentTime, 1000);
 
 navigator.geolocation.getCurrentPosition((position) => {
@@ -81,7 +94,22 @@ navigator.geolocation.getCurrentPosition((position) => {
 });
 
 function displayGretting() {
-  grettingMsg.innerHTML = `Good morning ${mainUsername}!`;
+  if (parseInt(myTime[0]) < 12) {
+    grettingMsg.innerHTML = `Good morning ${mainUsername}!`;
+  } else if (parseInt(myTime[0]) >= 12 && parseInt(myTime[0]) < 18) {
+    grettingMsg.innerHTML = `Good afternoon ${mainUsername}!`;
+  } else if (parseInt(myTime[0]) >= 18) {
+    grettingMsg.innerHTML = `Good evening ${mainUsername}!`;
+  }
 }
 
+switchBtn.addEventListener("click", () => {
+  console.log(switchBtn.checked);
+  if (switchBtn.checked) {
+    document.getElementById("my-widgets").hidden = false;
+  } else if (!switchBtn.checked) {
+    document.getElementById("my-widgets").hidden = true;
+  }
+});
 displayGretting();
+setInterval(displayGretting, 60000);

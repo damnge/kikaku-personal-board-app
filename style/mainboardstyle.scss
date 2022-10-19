@@ -3,6 +3,7 @@
 $main-font: "Mulish", sans-serif;
 $pirmary-color: #333333;
 
+// styling of the main board
 .main__board {
   margin: 0;
   background: no-repeat center center fixed;
@@ -20,30 +21,35 @@ $pirmary-color: #333333;
     justify-content: space-between;
   }
 }
-
-.center__section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  &__gretting {
-    font-size: 54px;
-  }
-  &__subtitle {
-    margin-top: 50px;
-    font-size: 34px;
-  }
-  .name__input {
-    margin-top: 20px;
-    border: none;
-    border-bottom: 3px solid white;
-    padding: 5px 10px;
-    outline: none;
-    width: 426px;
-    background: transparent;
-  }
-  .name__input:focus {
-    color: white;
+.center__widget {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__gretting {
+      font-size: 54px;
+    }
+    &__subtitle {
+      margin-top: 50px;
+      font-size: 34px;
+    }
+    .name__input {
+      margin-top: 20px;
+      border: none;
+      border-bottom: 3px solid white;
+      padding: 5px 10px;
+      outline: none;
+      width: 426px;
+      background: transparent;
+    }
+    .name__input:focus {
+      color: white;
+    }
   }
 }
 
@@ -133,7 +139,7 @@ p.weather-temp {
   margin-left: -10px;
 }
 
-// Switch button
+// Switch button for widgets on the left side
 .switch {
   position: relative;
   display: inline-block;
