@@ -6,11 +6,33 @@ const switchBtn = document.getElementById("widget-swticher");
 
 let icons = document.querySelectorAll(".icon");
 let iconsInfo = document.querySelectorAll(".icon__info");
+let navigateIcon = document.querySelectorAll(".navigate-to");
 
 let mainUsername = localStorage.getItem("userName");
 let myCrypto = localStorage.getItem("crypto");
 let myTheme = localStorage.getItem("themes");
 let myTime = [];
+let date = "";
+let weekday = "";
+let day = "";
+let month = "";
+let currentDate = "";
+
+// Navigation through icons above the clock
+
+icons[0].addEventListener("click", () => {
+  document.getElementById("clock").style.display = "flex";
+  document.getElementById("meditation").style.display = "none";
+  song.pause();
+  document.getElementById("start-btn").textContent = "Start";
+});
+
+icons[1].addEventListener("click", () => {
+  document.getElementById("clock").style.display = "none";
+  document.getElementById("meditation").style.display = "flex";
+  document.getElementById("my-widgets").hidden = true;
+  document.getElementById("widget-swticher").checked = false;
+});
 
 // api Key for unslpash
 const apiKey = "L3vkAHR1RZx6ycMWbsGzNucWccOq-ssQ3f7WVQKH9ng";
@@ -64,17 +86,27 @@ fetch(
   })
   .catch((err) => console.error(err));
 
-// Function getting current time
-function getCurrentTime() {
-  const date = new Date();
+// Function getting current time and date
+function getCurrentTimeAndDate() {
+  date = new Date();
+  everyday = new Date(date);
+  const options = { weekday: "long" };
+  weekday = new Intl.DateTimeFormat("en-US", options).format(everyday);
+  day = date.getDate();
+  month = date.toLocaleString("default", { month: "long" });
+  let year = date.getFullYear();
+  currentDate = `${day}-${month}-${year}`;
+  document.getElementById("weekday").textContent = weekday;
+  document.getElementById("weekday-number").textContent = day;
+  document.getElementById("current-month").innerHTML = `<h3>${month}`;
   document.getElementById("time").textContent = date.toLocaleTimeString(
     "en-GB",
     { timeStyle: "short" }
   );
   myTime = date.toLocaleTimeString("en-GB", { timeStyle: "short" }).split(":");
 }
-getCurrentTime();
-setInterval(getCurrentTime, 1000);
+getCurrentTimeAndDate();
+setInterval(getCurrentTimeAndDate, 1000);
 
 // fetching weather API
 navigator.geolocation.getCurrentPosition((position) => {
@@ -98,6 +130,7 @@ navigator.geolocation.getCurrentPosition((position) => {
     .catch((err) => console.error(err));
 });
 
+// Display Greeting depending on the time of the day
 function displayGretting() {
   if (parseInt(myTime[0]) < 12) {
     grettingMsg.innerHTML = `Good morning ${mainUsername}!`;
@@ -119,24 +152,10 @@ switchBtn.addEventListener("click", () => {
 displayGretting();
 setInterval(displayGretting, 60000);
 
-icons[1].addEventListener("click", () => {
-  document.getElementById("clock").style.display = "none";
-  document.getElementById("meditation").style.display = "flex";
-});
+// ----- MEDITATION APP ------
 
-icons[0].addEventListener("click", () => {
-  document.getElementById("clock").style.display = "flex";
-  document.getElementById("meditation").style.display = "none";
-});
-// icons[0].addEventListener("mouseover", () => {
-//   iconsInfo[0].style.display = "block";
-// });
-
-// ----- MEDITATION ------
-// Meditation app built with vanilla javascript
 const song = document.querySelector(".song");
 const play = document.querySelector(".play");
-const replay = document.querySelector(".replay");
 
 //Sounds
 const sounds = document.querySelectorAll(".song");
