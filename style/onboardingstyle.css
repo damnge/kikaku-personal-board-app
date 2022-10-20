@@ -19,6 +19,7 @@ body {
 }
 .container .logo {
   margin-top: 35px;
+  width: 150px;
 }
 
 .hero__section {

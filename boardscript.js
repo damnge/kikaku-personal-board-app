@@ -321,7 +321,7 @@ function startTimer() {
 
       startTimer();
     }
-  }, 1000);
+  }, 100);
 }
 
 function stopTimer() {

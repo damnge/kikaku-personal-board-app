@@ -49,7 +49,7 @@
   transition: all 0.2s;
 }
 .center__widget__section__clock {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -127,7 +127,7 @@
   color: #333333;
 }
 .center__widget__section__pomodoro {
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 .center__widget__section__pomodoro .timer {
