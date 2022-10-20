@@ -55,7 +55,7 @@ function nextPage(e) {
     onboardingForm.username.focus();
     return;
   } else if (username.trim() === "") {
-    alert("provide name!");
+    alert("Please provide the answer!");
     return;
   }
   if (!secondPage.hidden && thirdPage.hidden && username.trim() != "") {
@@ -76,7 +76,7 @@ function nextPage(e) {
     hideAndShow(forthPage, fithPage);
     return;
   } else if (!theme && username) {
-    alert("provide theme!");
+    alert("Please provide the answer!");
     return;
   }
   if (!fithPage.hidden && curiosity) {
@@ -86,7 +86,7 @@ function nextPage(e) {
     onboardingForm.crypto.focus();
     return;
   } else if (!curiosity && theme) {
-    alert("provide curiosoti!");
+    alert("Please provide the answer!");
     return;
   }
   if (!sixthPage.hidden && crypto.trim() != "") {
@@ -98,12 +98,13 @@ function nextPage(e) {
     hideAndShow(sixthPage, seventhPage);
     return;
   } else if (crypto.trim() === "" && curiosity) {
-    alert("provide crypto!");
+    alert("Please provide the answer!");
     return;
   }
   if (!seventhPage.hidden) {
     onboardingPage.hidden = true;
     mainBoardPage.hidden = false;
+    location.reload();
     return;
   }
 }

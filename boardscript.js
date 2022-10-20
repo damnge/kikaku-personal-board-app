@@ -2,15 +2,15 @@
 const mainBoardPage = document.getElementById("main-board");
 const grettingMsg = document.getElementById("gretting");
 const switchBtn = document.getElementById("widget-swticher");
+const icons = document.querySelectorAll(".icon");
+const iconsInfo = document.querySelectorAll(".icon__info");
+
 // data from the localStorage
-
-let icons = document.querySelectorAll(".icon");
-let iconsInfo = document.querySelectorAll(".icon__info");
-let navigateIcon = document.querySelectorAll(".navigate-to");
-
 let mainUsername = localStorage.getItem("userName");
 let myCrypto = localStorage.getItem("crypto");
 let myTheme = localStorage.getItem("themes");
+
+// reassignable variables
 let myTime = [];
 let date = "";
 let weekday = "";
@@ -37,7 +37,7 @@ icons[1].addEventListener("click", () => {
 // api Key for unslpash
 const apiKey = "L3vkAHR1RZx6ycMWbsGzNucWccOq-ssQ3f7WVQKH9ng";
 
-// fetching unsplash photos
+// BACKGROUND THEME WIDGET --- fetching unsplash photos
 fetch(
   `https://api.unsplash.com/photos//random?orientation=landscape&query=${myTheme}&client_id=${apiKey}`
 )
@@ -51,7 +51,17 @@ fetch(
     mainBoardPage.style.backgroundImage = `url(img/errorbg.png)`;
   });
 
-//   fetching Crytpo API from Coingecko
+// Swticher for left widgets
+switchBtn.addEventListener("click", () => {
+  console.log(switchBtn.checked);
+  if (switchBtn.checked) {
+    document.getElementById("my-widgets").hidden = false;
+  } else if (!switchBtn.checked) {
+    document.getElementById("my-widgets").hidden = true;
+  }
+});
+
+//   CRYPTO WIDGET ---- fetching Crytpo API from Coingecko
 fetch(
   `https://api.coingecko.com/api/v3/coins/${myCrypto}?tickers=true&market_data=true&community_data=true&developer_data=true&sparkline=true`
 )
@@ -86,7 +96,7 @@ fetch(
   })
   .catch((err) => console.error(err));
 
-// Function getting current time and date
+// DATE AND TIME WIDGET --- Function getting current time and date
 function getCurrentTimeAndDate() {
   date = new Date();
   everyday = new Date(date);
@@ -108,7 +118,7 @@ function getCurrentTimeAndDate() {
 getCurrentTimeAndDate();
 setInterval(getCurrentTimeAndDate, 1000);
 
-// fetching weather API
+// WEATHER WIDGET --- fetching weather API
 navigator.geolocation.getCurrentPosition((position) => {
   fetch(
     `https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`
@@ -140,15 +150,7 @@ function displayGretting() {
     grettingMsg.innerHTML = `Good evening ${mainUsername}!`;
   }
 }
-// Swticher for left widgets
-switchBtn.addEventListener("click", () => {
-  console.log(switchBtn.checked);
-  if (switchBtn.checked) {
-    document.getElementById("my-widgets").hidden = false;
-  } else if (!switchBtn.checked) {
-    document.getElementById("my-widgets").hidden = true;
-  }
-});
+
 displayGretting();
 setInterval(displayGretting, 60000);
 
