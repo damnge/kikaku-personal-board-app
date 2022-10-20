@@ -7,6 +7,7 @@
   -o-background-size: cover;
   background-size: cover;
   color: white;
+  background-color: rgba(0, 0, 0, 0.7);
   text-shadow: 0px 0px 20px #242424;
 }
 .main__board__container {
@@ -22,6 +23,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  height: 600px;
 }
 .center__widget__section {
   display: flex;
@@ -36,6 +38,7 @@
   padding: 12px 0;
   border-radius: 25px;
   background-color: rgba(51, 51, 51, 0.2392156863);
+  margin-bottom: 30px;
 }
 .center__widget__section__nav .icon {
   cursor: pointer;
@@ -45,20 +48,26 @@
   filter: invert(0.3) brightness(0.5);
   transition: all 0.2s;
 }
-.center__widget__section__time {
+.center__widget__section__clock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center__widget__section__clock__time {
   text-align: center;
   font-size: 145px;
 }
-.center__widget__section__gretting {
+.center__widget__section__clock__gretting {
   font-size: 54px;
   text-align: center;
 }
-.center__widget__section__subtitle {
+.center__widget__section__clock__subtitle {
   margin-top: 50px;
   font-size: 34px;
   text-align: center;
 }
-.center__widget__section .name__input {
+.center__widget__section__clock .name__input {
   margin-top: 20px;
   border: none;
   border-bottom: 3px solid white;
@@ -68,8 +77,52 @@
   background: transparent;
   color: white;
 }
-.center__widget__section .name__input:focus {
+.center__widget__section__clock .name__input:focus {
   color: white;
+}
+.center__widget__section__meditation {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.center__widget__section__meditation .time-display {
+  color: white;
+  font-size: 145px;
+  margin-bottom: 30px;
+}
+.center__widget__section__meditation .play {
+  margin-bottom: 50px;
+}
+.center__widget__section__meditation .relaxed__wrapper {
+  background-color: rgba(51, 51, 51, 0.2392156863);
+  padding: 25px;
+}
+.center__widget__section__meditation .relaxed__wrapper__note {
+  font-size: 34px;
+  text-shadow: 0px 0px 20px #242424;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.center__widget__section__meditation .time-select {
+  width: 600px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.center__widget__section__meditation .time-select .time__btn {
+  color: white;
+  width: 148px;
+  height: 49px;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid white;
+  transition: all 0.5s ease;
+  font-family: "Mulish", sans-serif;
+}
+.center__widget__section__meditation .time-select button:hover {
+  background: white;
+  color: #333333;
 }
 
 .icon__info {
@@ -110,8 +163,7 @@
 .widget__crypto img {
   margin-right: 20px;
 }
-
-.current__price {
+.widget__crypto .current__price {
   font-weight: bold;
   margin-bottom: 5px;
   color: #333333;
@@ -153,7 +205,7 @@ p.weather-city {
 
 p.weather-temp {
   margin: 0;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   margin-left: -10px;
 }
 

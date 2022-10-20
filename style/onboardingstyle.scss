@@ -134,6 +134,11 @@ input[type="text"] {
   cursor: pointer;
 }
 
+.btn:hover {
+  background-color: #4d4d4d;
+  transition: all 0.2s;
+}
+
 .btn__next {
   float: right;
 }
