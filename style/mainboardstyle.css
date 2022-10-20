@@ -37,7 +37,7 @@
   justify-content: space-evenly;
   padding: 12px 0;
   border-radius: 25px;
-  background-color: rgba(51, 51, 51, 0.2392156863);
+  background-color: rgba(51, 51, 51, 0.3176470588);
   margin-bottom: 30px;
 }
 .center__widget__section__nav .icon {
@@ -49,7 +49,7 @@
   transition: all 0.2s;
 }
 .center__widget__section__clock {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -97,7 +97,7 @@
   margin-bottom: 50px;
 }
 .center__widget__section__meditation .relaxed__wrapper {
-  background-color: rgba(51, 51, 51, 0.2392156863);
+  background-color: rgba(51, 51, 51, 0.3176470588);
   padding: 25px;
 }
 .center__widget__section__meditation .relaxed__wrapper__note {
@@ -125,6 +125,57 @@
 .center__widget__section__meditation .time-select button:hover {
   background: white;
   color: #333333;
+}
+.center__widget__section__pomodoro {
+  display: flex;
+  flex-direction: column;
+}
+.center__widget__section__pomodoro .timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  text-align: center;
+}
+.center__widget__section__pomodoro .clock {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 145px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cabin", sans-serif;
+}
+.center__widget__section__pomodoro .button-group {
+  margin-top: 50px;
+  width: 600px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(51, 51, 51, 0.3176470588);
+  padding: 25px;
+}
+.center__widget__section__pomodoro .button-group .mode-button {
+  color: white;
+  width: 148px;
+  height: 49px;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid white;
+  transition: all 0.2s ease;
+}
+.center__widget__section__pomodoro .mode-button.active {
+  background-color: white;
+  color: #333333;
+}
+.center__widget__section__pomodoro button:focus,
+.center__widget__section__pomodoro button:active {
+  outline: none;
+}
+.center__widget__section__pomodoro .hidden {
+  display: none;
 }
 
 .widget {

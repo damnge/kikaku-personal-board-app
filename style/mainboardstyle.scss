@@ -4,7 +4,7 @@
 $main-font: "Mulish", sans-serif;
 $number-font: "Cabin", sans-serif;
 $pirmary-color: #333333;
-$glass-color: #3333333d;
+$glass-color: #33333351;
 
 // styling of the main board
 .main__board {
@@ -57,7 +57,7 @@ $glass-color: #3333333d;
     }
     //MAIN CLOCK STYLING
     &__clock {
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -136,6 +136,63 @@ $glass-color: #3333333d;
         color: $pirmary-color;
       }
     }
+    &__pomodoro {
+      display: flex;
+      flex-direction: column;
+
+      .timer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        text-align: center;
+      }
+
+      .clock {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        font-size: 145px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $number-font;
+      }
+      .button-group {
+        margin-top: 50px;
+        width: 600px;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: $glass-color;
+        padding: 25px;
+
+        .mode-button {
+          color: white;
+          width: 148px;
+          height: 49px;
+          background: none;
+          font-size: 20px;
+          cursor: pointer;
+          border: 1px solid white;
+          transition: all 0.2s ease;
+        }
+      }
+
+      .mode-button.active {
+        background-color: white;
+        color: $pirmary-color;
+      }
+
+      button:focus,
+      button:active {
+        outline: none;
+      }
+
+      .hidden {
+        display: none;
+      }
+    }
   }
 }
 
@@ -202,9 +259,6 @@ $glass-color: #3333333d;
   }
 }
 
-// div.top__right {
-//   float: left;
-// }
 // RIGHT WIDGET
 
 // Weather widget styling
