@@ -8,7 +8,7 @@ const icons = document.querySelectorAll(".icon");
 
 // data from the localStorage
 let mainUsername = localStorage.getItem("userName");
-let myCrypto = localStorage.getItem("crypto");
+let myCrypto = localStorage.getItem("crypto").toLowerCase();
 let myTheme = localStorage.getItem("themes");
 
 // reassignable variables
@@ -396,6 +396,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   switchMode("pomodoro");
 });
+
+// TO-DO LIST APP
 
 // On Load
 getCurrentTimeAndDate();
