@@ -2,8 +2,9 @@
 const mainBoardPage = document.getElementById("main-board");
 const grettingMsg = document.getElementById("gretting");
 const switchBtn = document.getElementById("widget-swticher");
+// const iconNav = document.getElementById("icon-nav");
 const icons = document.querySelectorAll(".icon");
-const iconsInfo = document.querySelectorAll(".icon__info");
+// const iconsInfo = document.querySelectorAll(".icon__info");
 
 // data from the localStorage
 let mainUsername = localStorage.getItem("userName");
@@ -49,6 +50,7 @@ icons[2].addEventListener("click", () => {
 const apiKey = "L3vkAHR1RZx6ycMWbsGzNucWccOq-ssQ3f7WVQKH9ng";
 
 // BACKGROUND THEME WIDGET --- fetching unsplash photos
+
 fetch(
   `https://api.unsplash.com/photos//random?orientation=landscape&query=${myTheme}&client_id=${apiKey}`
 )
@@ -178,10 +180,7 @@ const timeDisplay = document.querySelector(".time-display");
 const timeSelect = document.querySelectorAll(".time__btn");
 let fakeDuration = 600;
 
-timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
-  // minutes since the song started
-  fakeDuration % 60
-)}`;
+timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:00`;
 
 // play sound
 play.addEventListener("click", function () {
@@ -221,15 +220,20 @@ const checkPlaying = (song) => {
     song.pause();
   }
 };
-// We can animate the circle
+
 song.ontimeupdate = function () {
   // add an event listener to the song
   let currentTime = song.currentTime; // get the current time of the song
   let elapsed = fakeDuration - currentTime; // get the elapsed time of the song
   let seconds = Math.floor(elapsed % 60); // seconds since the song started
   let minutes = Math.floor(elapsed / 60); // minutes since the song started
-  timeDisplay.textContent = `${minutes}:${seconds}`; // display the minutes and seconds
-
+  if (song.paused && seconds === 0) {
+    timeDisplay.textContent = `${minutes}:${seconds}0`;
+  } else if (!song.paused && seconds > 9) {
+    timeDisplay.textContent = `${minutes}:${seconds}`; // display the minutes and seconds
+  } else if (seconds < 10) {
+    timeDisplay.textContent = `${minutes}:0${seconds}`;
+  }
   if (currentTime >= fakeDuration) {
     // if the current time is greater than or equal to the fake duration
     song.pause(); // pause the song
