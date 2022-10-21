@@ -255,7 +255,7 @@ const timer = {
 // Add the ability to start the timer and countdown to zero.
 let interval;
 //
-const buttonSound = new Audio("button-sound.mp3");
+const buttonSound = new Audio("./sounds/button-sound.mp3");
 const mainButton = document.getElementById("js-btn");
 mainButton.addEventListener("click", () => {
   buttonSound.play();
@@ -338,7 +338,7 @@ function stopTimer() {
 // updateClock() function is invoked. This function is how the countdown portion of the application is updated. It first updates the text of the timer to reflect the current time remaining. Next, it updates the progress bar to reflect the current time remaining. Finally, it updates the title of the page to reflect the current time remaining.
 function updateClock() {
   const { remainingTime } = timer;
-  const minutes = `${remainingTime.minutes}`.padStart(2, "0");
+  const minutes = `${remainingTime.minutes}`;
   const seconds = `${remainingTime.seconds}`.padStart(2, "0");
 
   const min = document.getElementById("js-minutes");
@@ -350,7 +350,6 @@ function updateClock() {
     timer.mode === "pomodoro" ? "Get back to work!" : "Take a break!";
   document.title = `${minutes}:${seconds} — ${text}`;
 
-  const progress = document.getElementById("js-progress");
   progress.value = timer[timer.mode] * 60 - timer.remainingTime.total;
 }
 // The switchMode() function adds two new properties to the timer object. First, a mode property is set to the current mode which could be pomodoro, shortBreak or longBreak. Next, a remainingTime property is set on the timer.
@@ -361,16 +360,12 @@ function switchMode(mode) {
     minutes: timer[mode],
     seconds: 0,
   };
+  stopTimer();
 
   document
     .querySelectorAll("button[data-mode]")
     .forEach((e) => e.classList.remove("active"));
   document.querySelector(`[data-mode="${mode}"]`).classList.add("active");
-  document.body.style.backgroundColor = `var(--${mode})`;
-  document
-    .getElementById("js-progress")
-    .setAttribute("max", timer.remainingTime.total);
-
   updateClock();
 }
 
