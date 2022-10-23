@@ -171,9 +171,6 @@
 .center__widget__section__pomodoro button:active {
   outline: none;
 }
-.center__widget__section__pomodoro .hidden {
-  display: none;
-}
 
 .widget {
   width: 340px;
@@ -215,11 +212,44 @@
   color: #7e7e7e;
   letter-spacing: 0.2em;
 }
+.widget__wiki {
+  height: 265px;
+  color: "Mulish", sans-serif;
+  color: #333333;
+  padding: 10px 20px;
+}
+.widget__wiki__year {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+.widget__wiki .divider {
+  background-color: #c9c9c9;
+  height: 1px;
+}
+.widget__wiki__description {
+  margin: 15px 0;
+  line-height: 22px;
+  font-weight: 300;
+  height: 145px;
+}
+.widget__wiki__btn {
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  float: right;
+  cursor: pointer;
+}
+.widget__wiki__btn:hover {
+  color: #7e7e7e;
+  transition: all 0.2s;
+}
 .widget__crypto {
   height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #333333;
 }
 .widget__crypto img {
   margin-right: 20px;
@@ -228,6 +258,16 @@
   font-weight: bold;
   margin-bottom: 5px;
   color: #333333;
+}
+.widget__crypto__error {
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  color: #ff3838;
+}
+.widget__crypto__error:hover {
+  color: #fb8a8a;
+  transition: all 0.2s;
 }
 
 .weather__widget {

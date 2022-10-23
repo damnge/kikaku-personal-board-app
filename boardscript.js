@@ -10,6 +10,8 @@ const icons = document.querySelectorAll(".icon");
 let mainUsername = localStorage.getItem("userName");
 let myCrypto = localStorage.getItem("crypto").toLowerCase();
 let myTheme = localStorage.getItem("themes");
+let myWikipedia = JSON.parse(localStorage.getItem("Wikipedia"));
+let myCuriosity = JSON.parse(localStorage.getItem("curiosity"));
 
 // reassignable variables
 let myTime = [];
@@ -17,7 +19,9 @@ let date = "";
 let weekday = "";
 let day = "";
 let month = "";
+let monthNumber = "";
 let currentDate = "";
+let nextEvent = 0;
 
 // Navigation through icons above the clock
 
@@ -54,19 +58,24 @@ const apiKey = "L3vkAHR1RZx6ycMWbsGzNucWccOq-ssQ3f7WVQKH9ng";
 fetch(
   `https://api.unsplash.com/photos//random?orientation=landscape&query=${myTheme}&client_id=${apiKey}`
 )
-  .then((res) => res.json())
+  .then((res) => {
+    if (!res.ok) {
+      throw Error("Can't load photos from unsplash!");
+    }
+    return res.json();
+  })
   .then((data) => {
     mainBoardPage.style.backgroundImage = `url(${data.urls.regular})`;
     document.getElementById("author").textContent = `By: ${data.user.name}`;
   })
   .catch((err) => {
+    console.error(err);
     // Use a default background image
     mainBoardPage.style.backgroundImage = `url(img/errorbg.png)`;
   });
 
 // Swticher for left widgets
 switchBtn.addEventListener("click", () => {
-  console.log(switchBtn.checked);
   if (switchBtn.checked) {
     document.getElementById("my-widgets").hidden = false;
   } else if (!switchBtn.checked) {
@@ -85,7 +94,6 @@ fetch(
     return res.json();
   })
   .then((data) => {
-    console.log(data);
     document.getElementById("crypto-img").innerHTML = `
             <img src=${data.image.small} />
         `;
@@ -107,7 +115,19 @@ fetch(
       ).innerHTML = `<img src="img/pluschart.svg" alt="daily chart of ${myCrypto}">`;
     }
   })
-  .catch((err) => console.error(err));
+  .catch((err) => {
+    console.error(err);
+    document.querySelector(
+      ".widget__crypto"
+    ).innerHTML = `<p class="widget__crypto__error"> Unfortunately we don't have this coin in our database</p>`;
+  });
+
+document.getElementById("my-crypto-widget").addEventListener("click", () => {
+  document.getElementById("onboarding-page").hidden = false;
+  mainBoardPage.hidden = true;
+  firstPage.hidden = true;
+  sixthPage.hidden = false;
+});
 
 // DATE AND TIME WIDGET --- Function getting current time and date
 function getCurrentTimeAndDate() {
@@ -117,6 +137,7 @@ function getCurrentTimeAndDate() {
   weekday = new Intl.DateTimeFormat("en-US", options).format(everyday);
   day = date.getDate();
   month = date.toLocaleString("default", { month: "long" });
+  monthNumber = 1 + date.getMonth();
   let year = date.getFullYear();
   currentDate = `${day}-${month}-${year}`;
   document.getElementById("weekday").textContent = weekday;
@@ -128,8 +149,45 @@ function getCurrentTimeAndDate() {
   );
   myTime = date.toLocaleTimeString("en-GB", { timeStyle: "short" }).split(":");
 }
-
+getCurrentTimeAndDate();
 setInterval(getCurrentTimeAndDate, 1000);
+
+// Wikipedia API widget
+if (myCuriosity) {
+  fetch(`https://byabbe.se/on-this-day/${monthNumber}/${day}/events.json`)
+    .then((res) => {
+      if (!res.ok) {
+        throw Error("Error we have a problem!");
+      }
+      return res.json();
+    })
+
+    .then((data) => {
+      localStorage.setItem("Wikipedia", JSON.stringify(data.events));
+      document.querySelector(
+        ".widget__wiki__year"
+      ).innerHTML = `In the year ${myWikipedia[nextEvent].year}`;
+      document.querySelector(
+        ".widget__wiki__description"
+      ).innerHTML = `${myWikipedia[nextEvent].description}`;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+} else {
+  document.getElementById("wikipedia").style.display = "none";
+}
+
+//  Next Event on click from Wikipedia
+document.querySelector(".widget__wiki__btn").addEventListener("click", () => {
+  nextEvent += 1;
+  document.querySelector(
+    ".widget__wiki__year"
+  ).innerHTML = `In the year ${myWikipedia[nextEvent].year}`;
+  document.querySelector(
+    ".widget__wiki__description"
+  ).innerHTML = `${myWikipedia[nextEvent].description}`;
+});
 
 // WEATHER WIDGET --- fetching weather API
 navigator.geolocation.getCurrentPosition((position) => {
@@ -192,7 +250,6 @@ play.addEventListener("click", function () {
 const restartSong = (song) => {
   // call the restartSong function
   let currentTime = song.currentTime; // get the current time
-  console.log(currentTime);
   song.currentTime = 0; // set the current time to 0
 };
 
@@ -314,13 +371,6 @@ function startTimer() {
         default:
           switchMode("pomodoro");
       }
-
-      if (Notification.permission === "granted") {
-        const text =
-          timer.mode === "pomodoro" ? "Get back to work!" : "Take a break!";
-        new Notification(text);
-      }
-
       document.querySelector(`[data-sound="${timer.mode}"]`).play();
 
       startTimer();
@@ -346,8 +396,6 @@ function updateClock() {
   min.textContent = minutes;
   sec.textContent = seconds;
 
-  const text =
-    timer.mode === "pomodoro" ? "Get back to work!" : "Take a break!";
   document.title = `${minutes}:${seconds} — ${text}`;
 
   progress.value = timer[timer.mode] * 60 - timer.remainingTime.total;
@@ -400,5 +448,4 @@ document.addEventListener("DOMContentLoaded", () => {
 // TO-DO LIST APP
 
 // On Load
-getCurrentTimeAndDate();
 displayGretting();

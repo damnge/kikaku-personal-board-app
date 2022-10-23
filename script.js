@@ -54,9 +54,8 @@ function nextPage(e) {
     hideAndShow(firstPage, secondPage);
     onboardingForm.username.focus();
     return;
-  } else if (username.trim() === "") {
-    alert("Please provide the answer!");
-    return;
+  } else if (!mainUsername) {
+    console.log("Please provide the answer0!");
   }
   if (!secondPage.hidden && thirdPage.hidden && username.trim() != "") {
     localStorage.setItem("userName", username);
@@ -76,7 +75,7 @@ function nextPage(e) {
     hideAndShow(forthPage, fithPage);
     return;
   } else if (!theme && username) {
-    alert("Please provide the answer!");
+    console.log("Please provide the answer1!");
     return;
   }
   if (!fithPage.hidden && curiosity) {
@@ -86,7 +85,7 @@ function nextPage(e) {
     onboardingForm.crypto.focus();
     return;
   } else if (!curiosity && theme) {
-    alert("Please provide the answer!");
+    console.log("Please provide the answer2!");
     return;
   }
   if (!sixthPage.hidden && crypto.trim() != "") {
@@ -98,7 +97,7 @@ function nextPage(e) {
     hideAndShow(sixthPage, seventhPage);
     return;
   } else if (crypto.trim() === "" && curiosity) {
-    alert("Please provide the answer!");
+    console.log("Please provide the answer3!");
     return;
   }
   if (!seventhPage.hidden) {
