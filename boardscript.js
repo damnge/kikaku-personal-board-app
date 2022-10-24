@@ -8,9 +8,9 @@ const icons = document.querySelectorAll(".icon");
 
 // data from the localStorage
 let mainUsername = localStorage.getItem("userName");
-let myCrypto = localStorage.getItem("crypto").toLowerCase();
+let myCrypto = localStorage.getItem("crypto");
 let myTheme = localStorage.getItem("themes");
-let myWikipedia = JSON.parse(localStorage.getItem("Wikipedia"));
+let myWikipedia = [];
 let myCuriosity = JSON.parse(localStorage.getItem("curiosity"));
 
 // reassignable variables
@@ -54,9 +54,11 @@ icons[2].addEventListener("click", () => {
 const apiKey = "L3vkAHR1RZx6ycMWbsGzNucWccOq-ssQ3f7WVQKH9ng";
 
 // BACKGROUND THEME WIDGET --- fetching unsplash photos
-
+// 85317484; - abstract id
+// 94180231 - minimalistic id
+// 786923 - nature id
 fetch(
-  `https://api.unsplash.com/photos//random?orientation=landscape&query=${myTheme}&client_id=${apiKey}`
+  `https://api.unsplash.com/photos//random?orientation=landscape&collections=${myTheme}&client_id=${apiKey}`
 )
   .then((res) => {
     if (!res.ok) {
@@ -153,30 +155,32 @@ getCurrentTimeAndDate();
 setInterval(getCurrentTimeAndDate, 1000);
 
 // Wikipedia API widget
-if (myCuriosity) {
-  fetch(`https://byabbe.se/on-this-day/${monthNumber}/${day}/events.json`)
-    .then((res) => {
-      if (!res.ok) {
-        throw Error("Error we have a problem!");
-      }
-      return res.json();
-    })
 
-    .then((data) => {
-      localStorage.setItem("Wikipedia", JSON.stringify(data.events));
+fetch(`https://byabbe.se/on-this-day/${monthNumber}/${day}/events.json`)
+  .then((res) => {
+    if (!res.ok) {
+      throw Error("Error we have a problem!");
+    }
+    return res.json();
+  })
+
+  .then((data) => {
+    localStorage.setItem("Wikipedia", JSON.stringify(data.events));
+    myWikipedia = JSON.parse(localStorage.getItem("Wikipedia"));
+    if (myCuriosity) {
       document.querySelector(
         ".widget__wiki__year"
       ).innerHTML = `In the year ${myWikipedia[nextEvent].year}`;
       document.querySelector(
         ".widget__wiki__description"
-      ).innerHTML = `${myWikipedia[nextEvent].description}`;
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-} else {
-  document.getElementById("wikipedia").style.display = "none";
-}
+      ).innerHTML = `<a href="${myWikipedia[nextEvent].wikipedia[0].wikipedia}">${myWikipedia[nextEvent].description}</a>`;
+    } else {
+      document.getElementById("wikipedia").style.display = "none";
+    }
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 //  Next Event on click from Wikipedia
 document.querySelector(".widget__wiki__btn").addEventListener("click", () => {
@@ -186,7 +190,7 @@ document.querySelector(".widget__wiki__btn").addEventListener("click", () => {
   ).innerHTML = `In the year ${myWikipedia[nextEvent].year}`;
   document.querySelector(
     ".widget__wiki__description"
-  ).innerHTML = `${myWikipedia[nextEvent].description}`;
+  ).innerHTML = `<a href="${myWikipedia[nextEvent].wikipedia[0].wikipedia}">${myWikipedia[nextEvent].description}</a>`;
 });
 
 // WEATHER WIDGET --- fetching weather API

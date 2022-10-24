@@ -12,7 +12,6 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .center__widget {
@@ -172,7 +171,12 @@
   outline: none;
 }
 
-.widget {
+.top__left {
+  margin-top: 50px;
+  z-index: 2;
+  width: 400px;
+}
+.top__left .widget {
   width: 340px;
   margin-bottom: 30px;
   background-color: white;
@@ -183,91 +187,98 @@
   justify-content: center;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
 }
-.widget__date {
+.top__left .widget__date {
   height: 150px;
   color: #333333;
   display: flex;
   align-items: center;
 }
-.widget__date__day {
+.top__left .widget__date__day {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-right: 30px;
 }
-.widget__date__day .weekday {
+.top__left .widget__date__day .weekday {
   color: rgb(204, 16, 16);
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.1em;
 }
-.widget__date__day .weekday-number {
+.top__left .widget__date__day .weekday-number {
   font-size: 75px;
   font-family: "Cabin", sans-serif;
 }
-.widget__date__month {
+.top__left .widget__date__month {
   color: green;
   text-transform: uppercase;
   color: #7e7e7e;
   letter-spacing: 0.2em;
 }
-.widget__wiki {
+.top__left .widget__wiki {
   height: 265px;
   color: "Mulish", sans-serif;
   color: #333333;
   padding: 10px 20px;
 }
-.widget__wiki__year {
+.top__left .widget__wiki__year {
   text-align: center;
   margin-bottom: 10px;
   font-size: 26px;
 }
-.widget__wiki .divider {
+.top__left .widget__wiki .divider {
   background-color: #c9c9c9;
   height: 1px;
 }
-.widget__wiki__description {
+.top__left .widget__wiki__description {
   margin: 15px 0;
   line-height: 22px;
   font-weight: 300;
   height: 145px;
+  width: 300px;
 }
-.widget__wiki__btn {
+.top__left .widget__wiki__btn {
   border: none;
   background-color: transparent;
   font-size: 18px;
   float: right;
   cursor: pointer;
 }
-.widget__wiki__btn:hover {
+.top__left .widget__wiki__btn:hover {
   color: #7e7e7e;
   transition: all 0.2s;
 }
-.widget__crypto {
+.top__left .widget__crypto {
   height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #333333;
 }
-.widget__crypto img {
+.top__left .widget__crypto img {
   margin-right: 20px;
 }
-.widget__crypto .current__price {
+.top__left .widget__crypto .current__price {
   font-weight: bold;
   margin-bottom: 5px;
   color: #333333;
 }
-.widget__crypto__error {
+.top__left .widget__crypto__error {
   text-align: center;
   padding: 10px;
   cursor: pointer;
   color: #ff3838;
 }
-.widget__crypto__error:hover {
+.top__left .widget__crypto__error:hover {
   color: #fb8a8a;
   transition: all 0.2s;
+}
+
+#author {
+  bottom: 0;
+  position: fixed;
+  margin-bottom: 10px;
 }
 
 .weather__widget {

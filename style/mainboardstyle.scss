@@ -22,7 +22,6 @@ $glass-color: #33333351;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   }
 }
 // styling of center widget
@@ -194,111 +193,121 @@ $glass-color: #33333351;
 
 // LEFT WIDGETS
 
-.widget {
-  width: 340px;
-  margin-bottom: 30px;
-  background-color: white;
-  border-radius: 5px;
-  text-shadow: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-    0 100px 80px rgba(0, 0, 0, 0.12);
-  //   Date widget styling
-  &__date {
-    height: 150px;
-    color: $pirmary-color;
+.top__left {
+  margin-top: 50px;
+  z-index: 2;
+  width: 400px;
+  .widget {
+    width: 340px;
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 5px;
+    text-shadow: none;
     display: flex;
     align-items: center;
-
-    &__day {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-right: 30px;
-      .weekday {
-        color: rgb(204, 16, 16);
-        text-transform: uppercase;
-        font-weight: bold;
-        letter-spacing: 0.1em;
-      }
-      .weekday-number {
-        font-size: 75px;
-        font-family: $number-font;
-      }
-    }
-    &__month {
-      color: green;
-      text-transform: uppercase;
-      color: #7e7e7e;
-      letter-spacing: 0.2em;
-    }
-  }
-  // Wikipedia widget styling
-  &__wiki {
-    height: 265px;
-    color: $main-font;
-    color: $pirmary-color;
-    padding: 10px 20px;
-    &__year {
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 26px;
-    }
-    .divider {
-      background-color: #c9c9c9;
-      height: 1px;
-    }
-    &__description {
-      margin: 15px 0;
-      line-height: 22px;
-      // color: #4c4c4c;
-      font-weight: 300;
-      height: 145px;
-    }
-    &__btn {
-      // border: 1px solid #333333;
-      border: none;
-      background-color: transparent;
-      font-size: 18px;
-      float: right;
-      cursor: pointer;
-    }
-    &__btn:hover {
-      color: #7e7e7e;
-      transition: all 0.2s;
-    }
-  }
-  //Crypto widget styling
-  &__crypto {
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: $pirmary-color;
-    img {
-      margin-right: 20px;
-    }
-    .current__price {
-      font-weight: bold;
-      margin-bottom: 5px;
+    justify-content: center;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12);
+    //   Date widget styling
+    &__date {
+      height: 150px;
       color: $pirmary-color;
+      display: flex;
+      align-items: center;
+
+      &__day {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 30px;
+        .weekday {
+          color: rgb(204, 16, 16);
+          text-transform: uppercase;
+          font-weight: bold;
+          letter-spacing: 0.1em;
+        }
+        .weekday-number {
+          font-size: 75px;
+          font-family: $number-font;
+        }
+      }
+      &__month {
+        color: green;
+        text-transform: uppercase;
+        color: #7e7e7e;
+        letter-spacing: 0.2em;
+      }
     }
-    &__error {
-      text-align: center;
-      padding: 10px;
-      cursor: pointer;
-      color: #ff3838;
+    // Wikipedia widget styling
+    &__wiki {
+      height: 265px;
+      color: $main-font;
+      color: $pirmary-color;
+      padding: 10px 20px;
+      &__year {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 26px;
+      }
+      .divider {
+        background-color: #c9c9c9;
+        height: 1px;
+      }
+      &__description {
+        margin: 15px 0;
+        line-height: 22px;
+        font-weight: 300;
+        height: 145px;
+        width: 300px;
+      }
+      &__btn {
+        border: none;
+        background-color: transparent;
+        font-size: 18px;
+        float: right;
+        cursor: pointer;
+      }
+      &__btn:hover {
+        color: #7e7e7e;
+        transition: all 0.2s;
+      }
     }
-    &__error:hover {
-      color: #fb8a8a;
-      transition: all 0.2s;
+    //Crypto widget styling
+    &__crypto {
+      height: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: $pirmary-color;
+      img {
+        margin-right: 20px;
+      }
+      .current__price {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: $pirmary-color;
+      }
+      &__error {
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        color: #ff3838;
+      }
+      &__error:hover {
+        color: #fb8a8a;
+        transition: all 0.2s;
+      }
     }
   }
+}
+// Author name always on the bottom left corner
+#author {
+  bottom: 0;
+  position: fixed;
+  margin-bottom: 10px;
 }
 
 // RIGHT WIDGET
