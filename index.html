@@ -170,7 +170,10 @@
         <div class="main__board__container">
           <!-- Swicher for the left widgets -->
           <div class="widget__switcher">
-            <label class="switch">
+            <label
+              class="switch"
+              aria-label="switcher button that shows left widgets"
+            >
               <input type="checkbox" id="widget-swticher" />
               <span class="slider"></span>
             </label>
@@ -209,7 +212,9 @@
           </div>
           <!-- WEATHER WIDGET -->
           <div class="weather__widget">
-            <div id="weather"><img src="img/spinner.svg" />`</div>
+            <div id="weather">
+              <img src="img/spinner.svg" alt="loading spinner" />`
+            </div>
           </div>
 
           <div class="center__widget">
@@ -219,19 +224,19 @@
                   class="icon"
                   aria-label="regular clock"
                   src="img/clock.svg"
-                  alt="clock"
+                  alt="clock icon"
                 />
                 <img
                   class="icon"
                   aria-label="meditation app"
                   src="img/meditation.svg"
-                  alt="meditation app"
+                  alt="meditation app icon"
                 />
                 <img
                   class="icon"
                   aria-label="pomodoro timer"
                   src="img/timer.svg"
-                  alt="pomodoro timer"
+                  alt="pomodoro timer icon"
                 />
               </div>
               <!-- CLOCK  -->
@@ -245,7 +250,7 @@
                 <label
                   class="center__widget__section__clock__subtitle"
                   for="mainfocus"
-                  aria-label="What's your name?"
+                  aria-label="What's your main focus of the day?"
                   >What's your main focus for today?</label
                 >
                 <input
