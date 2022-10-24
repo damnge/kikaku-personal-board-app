@@ -570,3 +570,101 @@ input:checked + .slider:before {
   -ms-transform: translateX(19px);
   transform: translateX(19px);
 }
+
+// /* Media Query: for larger smartphones */
+// @media screen and (max-device-width: 414px) and (max-device-height: 915px) and (min-device-height: 740px) {
+//   .game__container {
+//     margin-top: 50px;
+//   }
+//   .selected__item {
+//     top: 395px;
+//   }
+// }
+
+@media screen and (max-width: 1000px) {
+  .container {
+    max-width: 600px;
+    .hero__section__wrapper {
+      max-width: 360px;
+    }
+    .logo {
+      margin-top: 25px;
+      margin-left: 25px;
+      width: 125px;
+    }
+    .hero__section__headline,
+    .hero__section__paragraph,
+    .hero__section__question {
+      font-size: 40px;
+      line-height: 65px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 376px;
+    .logo {
+      margin-top: 25px;
+      margin-left: 25px;
+      width: 125px;
+    }
+  }
+
+  .hero__section__headline {
+    font-size: 30px;
+    line-height: 50px;
+    padding-top: 50px;
+  }
+  .hero__section__headline {
+    font-size: 30px;
+    line-height: 50px;
+    padding-top: 50px;
+  }
+  .hero__section {
+    padding: 25px;
+    max-width: 376px;
+    height: 500px;
+    .hero__section__wrapper .name__input {
+      width: 300px;
+    }
+    input[type="text"] {
+      font-size: 24px;
+    }
+  }
+  .hero__section__paragraph {
+    padding-top: 50px;
+    font-size: 30px;
+    font-weight: 200;
+    line-height: 50px;
+    text-align: center;
+  }
+  .btn__next {
+    margin-right: 25px;
+  }
+  .btn__skip {
+    margin-top: 10px;
+    margin-left: 25px;
+  }
+  .hero__section__question {
+    margin-top: 30px;
+    font-size: 30px;
+    font-weight: 200;
+    line-height: 50px;
+    text-align: center;
+  }
+  .radio__inputs {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    input {
+      margin-bottom: 10px;
+    }
+  }
+  .progress__bar {
+    margin-top: 20px;
+  }
+}
